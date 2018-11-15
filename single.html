@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="da">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Huset-KBH - Events</title>
+    <link href="https://fonts.googleapis.com/css?family=Play:400,700" rel="stylesheet">
+    <link rel="stylesheet" href="singlestyles.css">
+    <style>
+        /* --- Event-template CSS --- */
+
+        #content {
+            padding-bottom: 50px;
+        }
+
+        .event {
+            /*    border: 1px solid #000;*/
+            padding: 15px;
+            font-family: play;
+            width: 830px;
+
+        }
+
+        .billede-boks {
+            background-size: cover;
+            overflow: hidden;
+            height: 100vw;
+            width: 10vw;
+            /*    align-self: auto;*/
+            /*    padding: 0;*/
+        }
+
+        .data-img {
+            max-width: 800px;
+            height: auto;
+            align-self: center;
+            /*    align-content: center;*/
+            padding-bottom: 50px;
+
+
+        }
+
+        .data-titel {
+            font-size: 50px;
+            text-transform: uppercase;
+            font-weight: 700;
+            font-family: play;
+            margin-bottom: 20px;
+            padding-top: 30px;
+            padding-left: 20px;
+        }
+
+        .data-sted {
+            font-family: play;
+            font-size: 35px;
+            margin-bottom: 20px;
+            padding-left: 0px;
+            margin-left: 0px;
+            font-weight: 700;
+
+            padding-left: 20px;
+        }
+
+        .data-tid {
+            font-family: play;
+            font-size: 25px;
+            float: left;
+        }
+
+        .data-dato {
+            font-size: 25px;
+            font-family: play;
+            float: left;
+            margin-right: 4px;
+            padding-left: 20px;
+        }
+
+        .data-doortid {
+            font-family: play;
+            padding-bottom: 10px;
+        }
+
+        .data-genre {
+            font-family: play;
+            font-size: 20px;
+            padding-bottom: 10px;
+
+        }
+
+        .data-pris {
+            font-family: play;
+            padding-bottom: 10px;
+        }
+
+        .dato-tid {
+            padding-bottom: 30px;
+
+        }
+
+        .data-indhold {
+
+            padding-left: 20px;
+        }
+
+        /* PETERS STYLING */
+
+        .text-grid {
+            display: grid;
+            grid-template-areas: "indhold info" "indhold ." "indhold bestil";
+            grid-column-gap: 230px;
+        }
+
+        .indhold {
+            grid-area: indhold;
+        }
+
+        .info {
+            text-align: right;
+            grid-area: info;
+        }
+
+        .data-bestil {
+            grid-area: bestil;
+            align-self: baseline;
+        }
+
+        .bestil {
+            font-size: 100px;
+            font-family: huset;
+            font-family: huset;
+            margin: 0px;
+            padding: 0px;
+            align-self: baseline;
+        }
+
+        /* MEDIA QUARIES */
+
+        /* Smartphones (portrait and landscape) ----------- */
+
+        @media only screen and (min-device-width: 320px) and (max-device-width: 480px) {
+
+            .text-grid {
+                display: grid;
+                grid-template-areas: "indhold ." "info bestil";
+
+                grid-row-gap: 50px;
+            }
+
+            .indhold {
+                /*    width: 50%;*/
+                /*    float: left;*/
+                grid-area: indhold;
+                max-width: 380px;
+
+            }
+            .bestil {
+                font-size: 100px;
+                font-family: huset;
+                /*        float: right;*/
+                margin: 0px;
+                padding: 0px;
+                align-self: baseline;
+
+            }
+
+            .info {
+                text-align: left;
+
+                grid-area: info;
+            }
+
+            /*
+    .data-img {
+    max-width: 780px;
+    height: auto;
+    align-self: center;
+    padding-bottom: 50px;
+
+}
+    .event {
+    padding: 15px;
+    font-family: play;
+    height: 70vw;
+    width: 780px;
+
+}
+*/
+        }
+
+        /* iPads (portrait and landscape) ----------- */
+
+        @media only screen and (min-device-width: 768px) and (max-device-width: 1024px) {
+            /* STYLES GO HERE */
+        }
+
+        /* Desktops and laptops ----------- */
+
+        @media only screen and (min-width: 1224px) {
+            /* STYLES GO HERE */
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div id="forside">
+            <div class="splash">
+                <nav class="main-nav">
+                    <ul class="burger">
+                        <li class="close">&times;</li>
+                        <li><a href="index.html">Forside</a></li>
+                        <li><a href="events.html">Events</a></li>
+                        <li><a href="frivillighed.html">Frivillighed</a></li>
+                        <li><a href="udlejning.html">Udlejning</a></li>
+                        <li><a href="om-huset.html">Om Huset</a></li>
+                        <li><a href="kontakt.html">Kontakt</a></li>
+                        <li><a href="faq.html">FAQ</a></li>
+                        <li><a href="#" class="husets_scener">Husets Scener</a></li>
+                        <div class="scener">
+                            <li><a href="stage.html">Stage</a></li>
+                            <li><a href="musikcafe.html">Musikcafe</a></li>
+                            <li><a href="biograf.html">Husets Biograf</a></li>
+                            <li><a href="spisehuset.html">Spisehuset</a></li>
+                            <li><a href="stardust.html">Stardust</a></li>
+                            <li><a href="bastard.html">Bastard Cafe</a></li>
+                        </div>
+                    </ul>
+                    <span class="mobile-btn">
+                        <img src="media/img/Untitled-1-01.png">
+                    </span>
+                </nav>
+                <h1 class="titel">
+                    <a href="index.html">
+                        <span class="flickering-3">E</span><span>VEN</span><span class="flickering-1">T</span><span>S</span>
+                    </a>
+                </h1>
+
+            </div>
+        </div>
+    </header>
+    <div id="page">
+        <div id="menu">
+            <div class="menu_box">
+                <div class="menu_punkter">
+                    <div class="border">
+                        <a href="events.html" class="events">EVENTS</a><br>
+                        <a href="frivillighed.html" class="frivillighed">FRIVILLIGHED</a><br>
+                        <a href="udlejning.html" class="udlejning">UDLEJNING</a><br>
+                        <a href="om-huset.html" class="om">OM HUSET</a><br>
+                        <a href="kontakt.html" class="kontakt">KONTAKT</a><br>
+                        <a href="faq.html" class="faq">FAQ</a>
+                    </div>
+                </div>
+                <div class="menu_bar">
+                    <h1><span>M</span><span>E</span><span>N</span><span>U</span></h1>
+                </div>
+            </div>
+            <div id="etager">
+                <div class="fire">
+                    <div class="sal">
+                        <div class="border_fire">
+                            <a href="stage.html" class="stage">STAGE</a><br>
+                            <a href="#" class="dagens_1">Dagens program</a>
+                        </div>
+                    </div>
+                    <div class="tal_fire">
+                        <h1>4</h1>
+                    </div>
+                </div>
+                <div class="tre">
+                    <div class="sal">
+                        <div class="border_tre">
+                            <a href="musikcafe.html" class="musikcafe">MUSIKCAFE</a><br>
+                            <a href="#" class="dagens_2">Dagens program</a>
+                        </div>
+                    </div>
+                    <div class="tal_tre">
+                        <h1>3</h1>
+                    </div>
+                </div>
+                <div class="to">
+                    <div class="sal">
+                        <div class="border_to">
+                            <a href="biograf.html" class="biograf">HUSETS BIOGRAF</a><br>
+                            <a href="#" class="dagens_3">Dagens program</a><br>
+                            <a href="bastard.html" class="bastarden">BASTARDEN</a>
+                        </div>
+                    </div>
+                    <div class="tal_to">
+                        <h1>2</h1>
+                    </div>
+                </div>
+                <div class="et">
+                    <div class="sal">
+                        <div class="border_et">
+                            <a href="spisehuset.html" class="spisehuset">SPISEHUSET</a><br>
+                            <a href="#" class="dagens_4">Dagens menu</a><br>
+                            <a href="stardust.html" class="stardust">STARDUST</a><br>
+                            <a href="#" class="dagens_5">Dagens program</a>
+                        </div>
+                    </div>
+                    <div class="tal_et">
+                        <h1>1</h1>
+                    </div>
+                </div>
+                <div class="nul">
+                    <div class="sal">
+                        <div class="border_nul">
+                            <a href="bastard.html" class="cafe">BASTARD CAFE</a>
+                        </div>
+                    </div>
+                    <div class="tal_nul">
+                        <h1>0</h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="content">
+            <article id="">
+                <section class="event">
+                    <p class="data-sted"></p>
+                    <!--                <div class="sted-dato-tid">-->
+                    <div class="dato-tid">
+                        <p class="data-dato"></p>
+                        <p class="data-tid"></p>
+                    </div>
+                    <h2 class="data-titel"></h2>
+
+                    <!--                </div>-->
+                    <a href="" class="linktosingle">
+                    <img class="data-img" src="">
+                </a>
+                    <div class="text-grid">
+                        <div class="indhold">
+                            <p class="data-indhold"></p>
+                        </div>
+                        <div class="info">
+                            <p class="data-genre"></p>
+                            <!--                <p class="data-dato"></p>-->
+                            <p class="data-doortid"></p>
+                            <p class="data-pris"></p>
+                            <p class="data-forsalg"></p>
+                        </div>
+                        <div class="data-bestil">
+                            <p class="bestil">BESTIL</p>
+                        </div>
+                    </div>
+                </section>
+            </article>
+        </div>
+    </div>
+    <script src="script.js"></script>
+    <script>
+        //find url-variablen id:
+        let url = new URL(window.location.href);
+        let variabler = new URLSearchParams(url.search);
+        let id = variabler.get("id");
+
+        async function getJson() {
+            let singleObjekt = await fetch("https://alexanderlandberg.dk/kea/huset/wp-json/wp/v2/events/" + id);
+            let singleevent = await singleObjekt.json();
+
+            //console.log(musikevent.acf.billede);
+
+            document.querySelector(".data-titel").textContent = singleevent.acf.Titel;
+            document.querySelector(".data-indhold").innerHTML = singleevent.acf.Indhold;
+            document.querySelector(".data-genre").textContent = singleevent.acf.Genre;
+            document.querySelector(".data-img").setAttribute("src", singleevent.acf.Billedefil);
+            document.querySelector(".data-dato").textContent = "Dato: " + singleevent.acf.Dato;
+            document.querySelector(".data-doortid").textContent = "Dørene åbner: Kl. " + singleevent.acf.Doortid;
+            document.querySelector(".data-tid").textContent = " - Kl. " + singleevent.acf.Starttid;
+            document.querySelector(".data-sted").textContent = singleevent.acf.Sal;
+            document.querySelector(".data-pris").textContent = "Entre: " + singleevent.acf.Billetpris + " kr";
+            document.querySelector(".data-forsalg").textContent = "Presale: " + singleevent.acf.Forsalgspris + " kr";
+            document.querySelector(".linktosingle").setAttribute("href", "single.html?id=" + singleevent.id);
+
+
+        }
+        //læs script når DOM er hentet
+        document.addEventListener("DOMContentLoaded", getJson);
+    </script>
+</body>
+
+</html>

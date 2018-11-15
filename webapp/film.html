@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="da">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Huset KBH - Film</title>
+    <link href="styles.css" rel="stylesheet" type="text/css">
+
+    <link rel="manifest" href="manifest.json">
+
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="application-name" content="Huset KBH - Events">
+    <meta name="apple-mobile-web-app-title" content="Huset KBH - Events">
+    <meta name="theme-color" content="#ffffff">
+    <meta name="msapplication-navbutton-color" content="#ffffff">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="msapplication-starturl" content="/kea/huset-kbh/webapp">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link rel="icon" type="image/png" sizes="32x32" href="logo/favicon-32x32.png">
+    <link rel="apple-touch-icon" type="image/png" sizes="32x32" href="logo/favicon-32x32.png">
+</head>
+
+<body>
+    <div class="maincontainer">
+        <header>
+            <div class="logo">
+                <a href="index.html"><img src="img/Artboard%201.png"></a>
+            </div>
+        </header>
+
+        <nav class="main-nav">
+            <ul class="menu">
+                <li class="close">&times;</li>
+                <li><a href="musik.html">MUSIK</a></li>
+                <li><a href="film.html">FILM</a></li>
+                <li><a href="performanceart.html">PERFORMANCE ART</a></li>
+                <li><a href="spokenword.html">SPOKEN WORD</a></li>
+            </ul>
+            <span class="mobile-btn">☰</span>
+            <div class="overlay"></div>
+        </nav>
+
+        <script src="scriptburger.js"></script>
+
+        <div>
+            <a href="film.html"><button>All</button></a>
+            <a href="filmgenre.html?kat=14"><button>Kult</button></a>
+            <a href="filmgenre.html?kat=15"><button>Art</button></a>
+            <a href="filmgenre.html?kat=16"><button>Dokumentar</button></a>
+            <a href="filmgenre.html?kat=17"><button>Horror</button></a>
+            <a href="filmgenre.html?kat=18"><button>Independent</button></a>
+            <a href="filmgenre.html?kat=19"><button>Musik</button></a>
+            <a href="filmgenre.html?kat=20"><button>Drama</button></a>
+            <a href="filmgenre.html?kat=29"><button>Klassiker</button></a>
+        </div>
+
+        <article id="eventscontainer"></article>
+    </div>
+
+    <template id="event-template">
+        <a href="" class="linktosingle">
+    <section class="event">
+        <div class="upper-box">
+
+            <div class="billede-boks">
+                <img class="data-img" src="">
+            </div>
+
+        <h2 class="data-titel"></h2>
+        </div>
+        <div class="lower-box">
+        <div class="linje1">
+            <p class="data-dato"></p>
+            <p class="data-doortid"></p>
+            <p class="data-genre"></p>
+        </div>
+        <div class="strej"></div>
+        <div class="linje2">
+
+        <p class="data-pris"></p>
+        <p class="data-sted"></p>
+        </div>
+        </div>
+    </section>
+            </a>
+</template>
+
+    <script>
+        let minTemplate = document.querySelector("#event-template");
+        let templateModtager = document.querySelector("#eventscontainer");
+        async function getJson() {
+            let eventObjekt = await fetch("http://alexanderlandberg.dk/kea/huset/wp-json/wp/v2/events?categories=3");
+            let events = await eventObjekt.json();
+            events.forEach(function(event) {
+                //console.log(event.acf.billede);
+                let klon = minTemplate.cloneNode(true).content;
+                klon.querySelector(".data-titel").textContent = event.acf.Titel;
+                klon.querySelector(".data-genre").textContent = event.acf.Genre;
+                klon.querySelector(".data-img").setAttribute("src", event.acf.Billedefil);
+                klon.querySelector(".data-dato").textContent = event.acf.Dato + " - ";
+                klon.querySelector(".data-doortid").textContent = " kl. " + event.acf.Doortid;
+                klon.querySelector(".data-sted").textContent = event.acf.Sal + " - ";
+                klon.querySelector(".data-pris").textContent = event.acf.Billetpris + " kr.";
+                klon.querySelector(".strej").getElementsByClassName = ".strej";
+                klon.querySelector(".linktosingle").setAttribute("href", "single.html?id=" + event.id);
+                templateModtager.appendChild(klon);
+            });
+        }
+        //læs script når DOM er hentet
+        document.addEventListener("DOMContentLoaded", getJson);
+
+        //BURGERMENU START
+
+        // Select the elements we want to show or hide
+        var mobileBtn = document.querySelector('.mobile-btn');
+        var menu = document.querySelector('.menu');
+        var closeBtn = document.querySelector('.close');
+        var overlay = document.querySelector('.overlay');
+
+
+        // When the user clicks on the hamburger icon the 'open' class is added
+        // to both the menu and overlay elements making them visible and triggering the animation
+        mobileBtn.addEventListener('click', function() {
+            menu.className += ' open';
+            overlay.className += ' open';
+            menu.style.display = "block";
+        })
+
+
+        // When the close button is clicked the 'open' class is removed from
+        // both the menu and overlay elements making them invisible
+        closeBtn.addEventListener('click', function() {
+            menu.className = 'menu';
+            overlay.className = 'overlay';
+            menu.style.display = "none";
+        })
+
+        // If a user clicks outside the menu on the overlay it will also trigger the event
+        // to hide the menu and overlay elements
+        window.addEventListener('click', function(event) {
+            if (event.target === overlay) {
+                menu.className = 'menu';
+                overlay.className = 'overlay';
+            }
+        })
+
+        //BURGER MENU SLUT
+
+        var a = document.getElementsByTagName("a");
+        for (var i = 0; i < a.length; i++) {
+            a[i].onclick = function() {
+                window.location = this.getAttribute("href");
+                return false
+            }
+        }
+
+    </script>
+</body>
+
+</html>

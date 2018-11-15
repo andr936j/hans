@@ -1,0 +1,15 @@
+{
+    "name": "Huset KBH - Events",
+    "short_name": "Huset KBH - Events",
+    "lang": "en-GB",
+    "start_url": "/kea/huset-kbh/webapp",
+    "display": "fullscreen",
+    "theme_color": "#ffffff",
+    "icons": [
+        {
+            "src": "logo/favicon-32x32.png",
+            "sizes": "32x32",
+            "type": "image/png"
+    }
+  ]
+}

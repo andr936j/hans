@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="da">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Huset KBH - Info</title>
+    <link href="styles.css" rel="stylesheet" type="text/css">
+
+    <link rel="manifest" href="manifest.json">
+
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="application-name" content="Huset KBH - Events">
+    <meta name="apple-mobile-web-app-title" content="Huset KBH - Events">
+    <meta name="theme-color" content="#ffffff">
+    <meta name="msapplication-navbutton-color" content="#ffffff">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="msapplication-starturl" content="/kea/huset-kbh/webapp">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link rel="icon" type="image/png" sizes="32x32" href="logo/favicon-32x32.png">
+    <link rel="apple-touch-icon" type="image/png" sizes="32x32" href="logo/favicon-32x32.png">
+</head>
+
+<body>
+    <div class="maincontainer">
+        <header>
+            <div class="logo">
+                <a href="index.html"><img src="img/Artboard%201.png"></a>
+            </div>
+        </header>
+
+        <nav class="main-nav">
+            <ul class="menu">
+                <li class="close">&times;</li>
+                <li><a href="musik.html">MUSIK</a></li>
+                <li><a href="film.html">FILM</a></li>
+                <li><a href="performanceart.html">PERFORMANCE ART</a></li>
+                <li><a href="spokenword.html">SPOKEN WORD</a></li>
+            </ul>
+            <span class="mobile-btn">☰</span>
+            <div class="overlay"></div>
+        </nav>
+
+        <!--<div>
+            <a href="musik.html">Musik</a>
+            <a href="genre.html?kat=8"><button>Jazz</button></a>
+            <a href="genre.html?kat=12"><button>World</button></a>
+            <a href="genre.html?kat=9"><button>Alt</button></a>
+            <a href="genre.html?kat=10"><button>Folk</button></a>
+            <a href="genre.html?kat=11"><button>Pop</button></a>
+            <a href="genre.html?kat=13"><button>Metal</button></a>
+            <a href="genre.html?kat=30"><button>Rock</button></a>
+        </div>
+        <div>
+            <a href="film.html">Film</a>
+            <a href="genre.html?kat=14"><button>Kult</button></a>
+            <a href="genre.html?kat=15"><button>Art</button></a>
+            <a href="genre.html?kat=16"><button>Dokumentar</button></a>
+            <a href="genre.html?kat=17"><button>Horror</button></a>
+            <a href="genre.html?kat=18"><button>Independent</button></a>
+            <a href="genre.html?kat=19"><button>Musik</button></a>
+            <a href="genre.html?kat=20"><button>Drama</button></a>
+            <a href="genre.html?kat=29"><button>Klassiker</button></a>
+        </div>
+        <div>
+            <a href="performanceart.html">Performance Art</a>
+            <a href="genre.html?kat=26"><button>Performance</button></a>
+            <a href="genre.html?kat=27"><button>Dans</button></a>
+            <a href="genre.html?kat=28"><button>Teater</button></a>
+        </div>
+        <div>
+            <a href="spokenword.html">Spoken Word</a>
+            <a href="genre.html?kat=21"><button>Standup</button></a>
+            <a href="genre.html?kat=22"><button>Poetry Slam</button></a>
+            <a href="genre.html?kat=23"><button>Debat</button></a>
+            <a href="genre.html?kat=24"><button>Quiz</button></a>
+            <a href="genre.html?kat=25"><button>Historiefortælling</button></a>
+            <a href="genre.html?kat=31"><button>Litteratur</button></a>
+        </div>-->
+        <article id="">
+            <section class="event">
+                <h2 class="data-titel"></h2>
+                <a href="" class="linktosingle">
+                    <img class="data-img" src="">
+                </a>
+                <p class="data-genre"></p>
+                <p class="data-dato"></p>
+                <p class="data-doortid"></p>
+                <p class="data-tid"></p>
+                <p class="data-indhold"></p>
+                <p class="data-sted"></p>
+                <p class="data-pris"></p>
+                <p class="data-forsalg"></p>
+            </section>
+        </article>
+    </div>
+    <script>
+        //find url-variablen id:
+        let url = new URL(window.location.href);
+        let variabler = new URLSearchParams(url.search);
+        let id = variabler.get("id");
+
+        async function getJson() {
+            let singleObjekt = await fetch("http://alexanderlandberg.dk/kea/huset/wp-json/wp/v2/events/" + id);
+            let singleevent = await singleObjekt.json();
+
+            //console.log(musikevent.acf.billede);
+
+            document.querySelector(".data-titel").textContent = singleevent.acf.Titel;
+            document.querySelector(".data-indhold").innerHTML = singleevent.acf.Indhold;
+            document.querySelector(".data-genre").textContent = singleevent.acf.Genre;
+            document.querySelector(".data-img").setAttribute("src", singleevent.acf.Billedefil);
+            document.querySelector(".data-dato").textContent = "Dato: " + singleevent.acf.Dato;
+            document.querySelector(".data-doortid").textContent = "Dørene åbner: Kl. " + singleevent.acf.Doortid;
+            document.querySelector(".data-tid").textContent = "Koncerten begynder: Kl. " + singleevent.acf.Starttid;
+            document.querySelector(".data-sted").textContent = singleevent.acf.Sal;
+            document.querySelector(".data-pris").textContent = "Entre: " + singleevent.acf.Billetpris + " kr";
+            document.querySelector(".data-forsalg").textContent = "Presale: " + singleevent.acf.Forsalgspris + " kr";
+            document.querySelector(".linktosingle").setAttribute("href", "single.html?id=" + singleevent.id);
+
+
+        }
+        //læs script når DOM er hentet
+        document.addEventListener("DOMContentLoaded", getJson);
+
+        //BURGERMENU START
+
+        // Select the elements we want to show or hide
+        var mobileBtn = document.querySelector('.mobile-btn');
+        var menu = document.querySelector('.menu');
+        var closeBtn = document.querySelector('.close');
+        var overlay = document.querySelector('.overlay');
+
+
+        // When the user clicks on the hamburger icon the 'open' class is added
+        // to both the menu and overlay elements making them visible and triggering the animation
+        mobileBtn.addEventListener('click', function() {
+            menu.className += ' open';
+            overlay.className += ' open';
+            menu.style.display = "block";
+        })
+
+
+        // When the close button is clicked the 'open' class is removed from
+        // both the menu and overlay elements making them invisible
+        closeBtn.addEventListener('click', function() {
+            menu.className = 'menu';
+            overlay.className = 'overlay';
+            menu.style.display = "none";
+        })
+
+        // If a user clicks outside the menu on the overlay it will also trigger the event
+        // to hide the menu and overlay elements
+        window.addEventListener('click', function(event) {
+            if (event.target === overlay) {
+                menu.className = 'menu';
+                overlay.className = 'overlay';
+            }
+        })
+
+        //BURGER MENU SLUT
+
+        var a = document.getElementsByTagName("a");
+        for (var i = 0; i < a.length; i++) {
+            a[i].onclick = function() {
+                window.location = this.getAttribute("href");
+                return false
+            }
+        }
+
+    </script>
+</body>
+
+</html>
